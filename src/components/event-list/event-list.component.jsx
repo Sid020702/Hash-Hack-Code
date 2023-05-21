@@ -5,7 +5,10 @@ import img3 from '../../assets/img3.svg'
 import img4 from '../../assets/img4.svg'
 import img5 from '../../assets/img5.svg'
 import left from '../../assets/chevron-left.svg'
+import { useSelector } from 'react-redux'
 const EventList = () => {
+    const festival_list = useSelector(state => state.festivalsReducer.data)
+    console.log(festival_list)
     var festivals = [
         {
             festival: "World Environment Day",
@@ -42,17 +45,17 @@ const EventList = () => {
         <div className='w-full'>
             {
                 festivals.map(festival => (
-                    <div className='w-[95%] flex justify-center mb-5 rounded-md  h-auto p-5 shadow-md'>
-                        <div>
-                            <img src={festival.img} alt="" />
+                    <div className='w-[95%] flex justify-center mb-5 rounded-md  h-auto p-5 shadow-md xs:flex-col xs:items-center'>
+                        <div className='flex items-center'>
+                            <img className=' inline-block m-auto' src={festival.img} alt="" />
                         </div>
-                        <div className='w-3/4 flex flex-col mx-5 px-5 justify-between  '>
+                        <div className='w-3/4 flex flex-col mx-5 px-5 justify-between xs:mt-10 xs:p-0 xs:w-full' >
                             <div>
-                                <h1 className='font-semibold text-xl text-left'>{festival.festival}</h1>
-                                <p className=' text-left'>{festival.about}</p>
+                                <h1 className='md:text-sm font-semibold text-xl text-left'>{festival.festival}</h1>
+                                <p className='md:text-xs text-justify my-[5px]'>{festival.about}</p>
                             </div>
                             <div className='flex items-center justify-between'>
-                                <span className='font-semibold text-lg'>{festival.date}</span>
+                                <span className='md:text-sm font-semibold text-lg'>{festival.date}</span>
                                 <img className=' rotate-180 w-[25px] cursor-pointer rounded-full bg-[#F8C000]' src={left} alt="" />
                             </div>
                         </div>
@@ -61,7 +64,7 @@ const EventList = () => {
                 ))
 
             }
-        </div>
+        </div >
     )
 }
 

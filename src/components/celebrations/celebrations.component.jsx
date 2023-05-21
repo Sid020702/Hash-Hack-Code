@@ -8,7 +8,7 @@ const Celebrations = () => {
     let date = new Date()
     const [month, setMonth] = useState(months[date.getMonth()])
     return (
-        <div className='p-10 overflow-x-hidden w-full '>
+        <div className='p-10 md:p-5  w-full  '>
             <div className="navbar flex items-center w-full overflow-x-auto ">
                 {
                     months.map(m => (
@@ -16,7 +16,7 @@ const Celebrations = () => {
                     ))
                 }
             </div>
-            <div className='w-full flex  m-5 p-7'>
+            <div className='w-full flex m-5 p-7 xs:p-2'>
                 <div className=' flex flex-col  w-3/4 '>
                     <EventList />
                 </div>
