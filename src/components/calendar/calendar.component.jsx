@@ -40,7 +40,7 @@ const Calendar = ({ months }) => {
                 {
                     dates.map(date => (
 
-                        <span key={date} className={`${date === 1 ? "col-start-4" : ""} ${(map[date] === 1) ? "text-white border-[#4E176C] bg-[#4E176C]" : ""} w-[25px] cursor-pointer m-auto font-semibold md:text-xs md:w-[16px] rounded-full `}>{date}</span>
+                        <span key={date} className={`${date === 1 ? "col-start-5" : ""} ${(map[date] === 1) ? "text-white border-[#4E176C] bg-[#4E176C]" : ""} w-[25px] cursor-pointer m-auto font-semibold md:text-xs md:w-[16px] rounded-full `}>{date}</span>
 
                     ))
 
