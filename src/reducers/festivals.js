@@ -1,7 +1,7 @@
-const festivalsReducer = (state = { data: null }, action) => {
+const festivalsReducer = (state = { data: null, months: null }, action) => {
     switch (action.type) {
         case "FETCH_ALL_FESTIVALS":
-            return { ...state, data: action.payload }
+            return { ...state, data: action.payload.res, months: action.payload.months }
         default:
             return state
     }

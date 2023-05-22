@@ -13,7 +13,7 @@ const Celebrations = () => {
             <div className="navbar flex items-center w-full overflow-x-auto ">
                 {
                     months.map(m => (
-                        <span onClick={() => setMonth(m)} className={`${month === m ? "bg-[#F8C000]" : "bg-white"} shrink-0 min-w-[110px] border-[#F8C000] cursor-pointer mx-2 text-lg font-semibold border-solid border-2 rounded-md`}>{m}</span>
+                        <span onClick={() => setMonth(m)} className={`${month == m ? "bg-[#F8C000]" : "bg-white"} shrink-0 min-w-[110px] border-[#F8C000] cursor-pointer mx-2 text-lg font-semibold border-solid border-2 rounded-md`}>{m}</span>
                     ))
                 }
             </div>
