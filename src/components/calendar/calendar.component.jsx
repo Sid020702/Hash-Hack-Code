@@ -1,15 +1,25 @@
 import React from 'react'
 import left from '../../assets/chevron-left.svg'
-
+import { useSelector } from 'react-redux';
 const Calendar = ({ months }) => {
-
+    const festivals = useSelector(state => state.festivalsReducer.data)
     const date = new Date();
-    const month = date.getMonth()
+    // const month = date.getMonth()
+    const month = 5
     const year = date.getFullYear()
     // let selected = new Date(String(year) + "-" + String(month) + "-01")  
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     let noOfDays = new Date(year, month + 1, 0).getDate()
+    var map = new Array(noOfDays).fill(0)
+
+    if (festivals) {
+        for (let festival of festivals) {
+            map[festival.date] = 1
+        }
+    }
+
     let dates = Array.from({ length: noOfDays }, (value, index) => { return index + 1 })
+
     return (
         <div className='w-full min-w-[300px] md:min-w-[100px]'>
             <div className="flex justify-between">
@@ -30,7 +40,7 @@ const Calendar = ({ months }) => {
                 {
                     dates.map(date => (
 
-                        <span key={date} className={`${date === 1 ? "col-start-4" : ""} ${(date === 5 || date === 19 || date === 21 || date == 30) ? "text-white border-[#4E176C] bg-[#4E176C]" : ""} w-[25px] cursor-pointer m-auto font-semibold md:text-xs md:w-[16px] rounded-full `}>{date}</span>
+                        <span key={date} className={`${date === 1 ? "col-start-4" : ""} ${(map[date] === 1) ? "text-white border-[#4E176C] bg-[#4E176C]" : ""} w-[25px] cursor-pointer m-auto font-semibold md:text-xs md:w-[16px] rounded-full `}>{date}</span>
 
                     ))
 

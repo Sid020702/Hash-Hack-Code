@@ -5,42 +5,54 @@ import img3 from '../../assets/img3.svg'
 import img4 from '../../assets/img4.svg'
 import img5 from '../../assets/img5.svg'
 import left from '../../assets/chevron-left.svg'
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { fetchAllfestivals } from '../../actions/festivals'
 const EventList = () => {
-    const festival_list = useSelector(state => state.festivalsReducer.data)
-    console.log(festival_list)
+
+    const dispatch = useDispatch()
+
     var festivals = [
         {
             festival: "World Environment Day",
             img: img1,
             about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis doloremque qui neque in maiores molestias hic commodi sed autem culpa",
-            date: "June 5"
+            month: "June",
+            date: 5
         },
         {
             festival: "Father's Day",
             img: img2,
             about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis doloremque qui neque in maiores molestias hic commodi sed autem culpa",
-            date: "June 19"
+            month: "June",
+            date: 19
         },
         {
             festival: "International Yoga Day",
             img: img3,
             about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis doloremque qui neque in maiores molestias hic commodi sed autem culpa",
-            date: "June 21"
+            month: "June",
+            date: 21
         },
         {
             festival: "Bakrid/Eid ul-Adha",
             img: img4,
             about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis doloremque qui neque in maiores molestias hic commodi sed autem culpa",
-            date: "June 28"
+            month: "June",
+            date: 28
         },
         {
             festival: "World Chocolate Day",
             img: img5,
             about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis doloremque qui neque in maiores molestias hic commodi sed autem culpa",
-            date: "June 30"
+            month: "June",
+            date: 30
         },
     ]
+
+    useEffect(() => {
+        dispatch(fetchAllfestivals(festivals))
+    })
     return (
         <div className='w-full'>
             {
@@ -55,7 +67,7 @@ const EventList = () => {
                                 <p className='md:text-xs text-justify my-[5px]'>{festival.about}</p>
                             </div>
                             <div className='flex items-center justify-between'>
-                                <span className='md:text-sm font-semibold text-lg'>{festival.date}</span>
+                                <span className='md:text-sm font-semibold text-lg'>{festival.month} {festival.date}</span>
                                 <img className=' rotate-180 w-[25px] cursor-pointer rounded-full bg-[#F8C000]' src={left} alt="" />
                             </div>
                         </div>
